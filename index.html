@@ -95,8 +95,9 @@
     </div>
 
     <h3>Latest Tweets</h3>
+    <!-- Twitter embed corregido -->
     <a class="twitter-timeline" href="https://twitter.com/genesisdao?ref_src=twsrc%5Etfw">Tweets by GenesisDAO</a> 
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="https://platform.twitter.com/widgets.js"></script>
   </section>
 
   <!-- Notificaciones flotantes -->
@@ -110,7 +111,7 @@
       const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if(entry.isIntersecting) {
-            entry.classList.add('appear');
+            entry.target.classList.add('appear');
             observer.unobserve(entry.target);
           }
         });
@@ -128,10 +129,11 @@
     ];
     setInterval(() => {
       projects.forEach(p => {
-        if(p.votes < p.max){
+        const el = document.getElementById(p.id);
+        if(el && p.votes < p.max){
           const inc = Math.floor(Math.random()*3);
           p.votes += inc;
-          document.getElementById(p.id).textContent = p.votes;
+          el.textContent = p.votes;
         }
       });
     }, 2000);
@@ -139,8 +141,11 @@
     // CONTADOR DE IDEAS DINÁMICO
     let ideaCount = 42;
     setInterval(() => {
-      ideaCount += Math.floor(Math.random()*3);
-      document.getElementById('idea-counter').textContent = ideaCount;
+      const el = document.getElementById('idea-counter');
+      if(el){
+        ideaCount += Math.floor(Math.random()*3);
+        el.textContent = ideaCount;
+      }
     }, 3000);
 
     // NOTIFICACIONES FLOTANTES
@@ -153,11 +158,13 @@
     ];
     setInterval(() => {
       const container = document.getElementById('notification-container');
-      const notif = document.createElement('div');
-      notif.className = 'notification';
-      notif.textContent = ideas[Math.floor(Math.random()*ideas.length)];
-      container.appendChild(notif);
-      setTimeout(() => notif.remove(), 4000);
+      if(container){
+        const notif = document.createElement('div');
+        notif.className = 'notification';
+        notif.textContent = ideas[Math.floor(Math.random()*ideas.length)];
+        container.appendChild(notif);
+        setTimeout(() => notif.remove(), 4000);
+      }
     }, Math.floor(Math.random()*5000)+5000);
   </script>
 
