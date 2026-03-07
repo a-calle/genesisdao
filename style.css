@@ -1,6 +1,13 @@
 /* ------------------ RESET ------------------ */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
 
+/* ------------------ BODY ------------------ */
+body {
+  background-color: #111; /* fondo oscuro */
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
 /* ------------------ NAVIGATION ------------------ */
 nav {
   background:#111;
@@ -14,36 +21,105 @@ nav ul li a { color:#f0f0f0; text-decoration:none; font-weight:600; transition: 
 nav ul li a:hover { color:#00ffff; }
 
 /* ------------------ HERO ------------------ */
-#hero { text-align:center; padding:2rem; color:#f0f0f0; }
-#hero h1 { font-size:3rem; margin-bottom:0.5rem; }
-#hero .slogan { font-weight:600; font-size:1.5rem; margin-bottom:0.5rem; }
-#hero .subheadline { font-size:1rem; color:#aaa; margin-bottom:1rem; }
-#hero .logo { max-width:150px; margin-bottom:1rem; }
+#hero {
+  text-align:center;
+  padding:3rem 2rem;
+}
+#hero h1 {
+  font-size:3rem;
+  margin-bottom:0.5rem;
+}
+#hero .slogan {
+  font-weight:600;
+  font-size:1.5rem;
+  margin-bottom:0.5rem;
+  color:#00ffff;
+}
+#hero .subheadline {
+  font-size:1rem;
+  color:#ccc;
+  margin-bottom:1rem;
+}
+#hero .logo {
+  max-width: 120px; /* logo más pequeño */
+  margin-bottom: 1rem;
+}
 
 /* ------------------ SECCIONES ------------------ */
-section { padding:4rem 2rem; opacity:0; transform:translateY(20px); transition:all 1s ease-out; }
-section.appear { opacity:1; transform:translateY(0); }
-section h2 { font-size:2rem; margin-bottom:1rem; color:#00ffff; text-shadow:0 0 10px #00ffff50,0 0 20px #00ffff30; }
-section p { font-size:1rem; margin-bottom:1rem; color:#ccc; }
+section {
+  padding:4rem 2rem;
+  opacity:0;
+  transform:translateY(20px);
+  transition:all 1s ease-out;
+}
+section.appear {
+  opacity:1;
+  transform:translateY(0);
+}
+section h2 {
+  font-size:2rem;
+  margin-bottom:1rem;
+  color:#00ffff;
+  text-shadow:0 0 10px #00ffff50,0 0 20px #00ffff30;
+}
+section p {
+  font-size:1rem;
+  margin-bottom:1rem;
+  color:#ccc;
+}
 
 /* ------------------ PROJECTS ------------------ */
-.project { background:rgba(26,26,26,0.7); padding:1.5rem; margin:1rem 0; border-radius:12px; transition: transform 0.3s; }
+.project {
+  background: rgba(26,26,26,0.8);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius:12px;
+  transition: transform 0.3s;
+}
 .project:hover { transform: translateY(-5px); }
 
 /* ------------------ BUTTONS ------------------ */
-.button { display:inline-block; padding:0.8rem 2rem; background:#00ffff; color:#111; text-decoration:none; font-weight:700; border-radius:8px; transition: all 0.3s; }
-.button:hover { background:#00cccc; color:#fff; }
+.button {
+  display:inline-block;
+  padding:0.8rem 2rem;
+  background:#00ffff;
+  color:#111;
+  text-decoration:none;
+  font-weight:700;
+  border-radius:8px;
+  transition:all 0.3s;
+}
+.button:hover {
+  background:#00cccc;
+  color:#fff;
+}
 .buttons a { margin-right:1rem; }
 
 /* ------------------ IDEAS PAGE ------------------ */
-.idea { background:rgba(26,26,26,0.7); padding:1.5rem; margin:1rem 0; border-radius:12px; transition: transform 0.3s; }
+.idea {
+  background: rgba(26,26,26,0.8);
+  padding:1.5rem;
+  margin:1rem 0;
+  border-radius:12px;
+  transition: transform 0.3s;
+}
 .idea:hover { transform:translateY(-5px); }
-.vote-btn { padding:0.5rem 1rem; margin-right:1rem; background:#00ffff; color:#111; border:none; border-radius:8px; font-weight:700; cursor:pointer; transition:all 0.3s; }
+.vote-btn {
+  padding:0.5rem 1rem;
+  margin-right:1rem;
+  background:#00ffff;
+  color:#111;
+  border:none;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all 0.3s;
+}
 .vote-btn:hover { background:#00cccc; color:#fff; }
 .vote-count { font-weight:600; }
 
 /* ------------------ MEDIA QUERIES ------------------ */
-@media (max-width:768px) {
+@media (max-width:768px){
   nav ul { flex-direction:column; gap:1rem; }
   #hero h1 { font-size:2.5rem; }
   #hero .slogan { font-size:1.2rem; }
