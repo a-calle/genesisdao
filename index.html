@@ -9,9 +9,6 @@
 </head>
 <body>
 
-  <!-- Canvas de partículas -->
-  <canvas id="particle-canvas"></canvas>
-
   <!-- NAVIGATION -->
   <nav>
     <ul>
@@ -54,19 +51,16 @@
   <!-- PROJECTS -->
   <section id="projects" class="fade-in">
     <h2>First Incubated Projects</h2>
-
     <div class="project">
       <h3>OpenAlpha</h3>
       <p>A platform where crypto communities share early opportunities and insights.</p>
       <p>Status: 🗳️ Voting</p>
     </div>
-
     <div class="project">
       <h3>ChainTools</h3>
       <p>A toolkit of simple web3 tools for creators and builders.</p>
       <p>Status: 💡 Idea</p>
     </div>
-
     <div class="project">
       <h3>SignalDAO</h3>
       <p>A community voting system to identify trending projects before they explode.</p>
@@ -78,7 +72,6 @@
   <section id="propose" class="fade-in">
     <h2>Propose Your Idea</h2>
     <p>Have an idea for a new crypto project? Submit it through the link below!</p>
-
     <div class="form-container">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSd36ym_ZU7Zngx3K0SfoXg7rkZ2U3Bpo2gOgF9W4e9AmagcFA/viewform?usp=sf_link" 
          target="_blank" 
@@ -95,13 +88,9 @@
       <a href="https://t.me/genesisdao" target="_blank" class="button">Telegram</a>
       <a href="https://pump.fun" target="_blank" class="button">Pump.fun</a>
     </div>
-
-    <h3>Latest Tweets</h3>
-    <a class="twitter-timeline" href="https://twitter.com/genesisdao?ref_src=twsrc%5Etfw">Tweets by GenesisDAO</a> 
-    <script async src="https://platform.twitter.com/widgets.js"></script>
   </section>
 
-  <!-- Scripts fade-in -->
+  <!-- Fade-in script -->
   <script>
     const faders = document.querySelectorAll('.fade-in');
     if ('IntersectionObserver' in window) {
@@ -117,64 +106,6 @@
     } else {
       faders.forEach(fader => faders.classList.add('appear'));
     }
-  </script>
-
-  <!-- Scripts partículas -->
-  <script>
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const particleCount = 80;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    for(let i=0;i<particleCount;i++){
-      particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: Math.random()*2+1,
-        dx: (Math.random()-0.5)*0.5,
-        dy: (Math.random()-0.5)*0.5
-      });
-    }
-
-    function drawParticles(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle='rgba(0,255,255,0.6)';
-        ctx.fill();
-      });
-      for(let i=0;i<particleCount;i++){
-        for(let j=i+1;j<particleCount;j++){
-          const p1=particles[i];
-          const p2=particles[j];
-          const dist=Math.hypot(p1.x-p2.x,p1.y-p2.y);
-          if(dist<120){
-            ctx.strokeStyle='rgba(0,255,255,'+(0.2*(1-dist/120))+')';
-            ctx.lineWidth=1;
-            ctx.beginPath();
-            ctx.moveTo(p1.x,p1.y);
-            ctx.lineTo(p2.x,p2.y);
-            ctx.stroke();
-          }
-        }
-      }
-      particles.forEach(p=>{
-        p.x+=p.dx;
-        p.y+=p.dy;
-        if(p.x<0||p.x>canvas.width)p.dx*=-1;
-        if(p.y<0||p.y>canvas.height)p.dy*=-1;
-      });
-      requestAnimationFrame(drawParticles);
-    }
-    drawParticles();
   </script>
 
 </body>

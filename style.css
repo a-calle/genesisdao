@@ -11,11 +11,10 @@
 /* ========================
    BODY CON FONDO ANIMADO
 ========================= */
-body {
-  color: #f0f0f0;
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background: linear-gradient(270deg, #0f0f0f, #111111, #0f0f0f, #111111);
   background-size: 800% 800%;
   animation: gradientBG 15s ease infinite;
@@ -48,60 +47,40 @@ nav ul li a {
   font-weight: 600;
   transition: color 0.3s;
 }
-nav ul li a:hover {
-  color: #00ffff;
-}
+nav ul li a:hover { color: #00ffff; }
 
 /* ========================
    HERO
 ========================= */
 #hero {
   text-align: center;
-  padding: 1rem 2rem; /* contenido pegado arriba */
+  padding: 1rem 2rem;
 }
 #hero h1, #hero .slogan, #hero .subheadline {
-  margin: 0.5rem 0; /* quitar márgenes grandes predeterminados */
+  margin: 0.2rem 0;
 }
-#hero .logo {
-  max-width: 150px;
-  margin-bottom: 1rem;
-}
-#hero h1 {
-  font-size: 3rem;
-}
-#hero .slogan {
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-#hero .subheadline {
-  font-size: 1rem;
-  color: #aaa;
-}
+#hero .logo { max-width: 150px; margin-bottom: 1rem; }
+#hero h1 { font-size: 3rem; }
+#hero .slogan { font-weight: 600; font-size: 1.5rem; }
+#hero .subheadline { font-size: 1rem; color: #aaa; }
 
 /* ========================
    SECCIONES
 ========================= */
 section {
   padding: 4rem 2rem;
-  opacity: 0;             
+  opacity: 0;
   transform: translateY(20px);
   transition: all 1s ease-out;
 }
-section.appear {
-  opacity: 1;
-  transform: translateY(0);
-}
+section.appear { opacity: 1; transform: translateY(0); }
 section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #00ffff;
   text-shadow: 0 0 10px #00ffff50, 0 0 20px #00ffff30;
 }
-section p {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: #ccc;
-}
+section p { font-size: 1rem; margin-bottom: 1rem; color: #ccc; }
 
 /* ========================
    PROJECTS
@@ -113,9 +92,7 @@ section p {
   border-radius: 12px;
   transition: transform 0.3s;
 }
-.project:hover {
-  transform: translateY(-5px);
-}
+.project:hover { transform: translateY(-5px); }
 
 /* ========================
    BUTTONS
@@ -130,26 +107,14 @@ section p {
   border-radius: 8px;
   transition: all 0.3s;
 }
-.button:hover {
-  background: #00cccc;
-  color: #fff;
-}
-.buttons a {
-  margin-right: 1rem;
-}
+.button:hover { background: #00cccc; color: #fff; }
+.buttons a { margin-right: 1rem; }
 
 /* ========================
    MEDIA QUERIES
 ========================= */
 @media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  #hero h1 {
-    font-size: 2.5rem;
-  }
-  #hero .slogan {
-    font-size: 1.2rem;
-  }
+  nav ul { flex-direction: column; gap: 1rem; }
+  #hero h1 { font-size: 2.5rem; }
+  #hero .slogan { font-size: 1.2rem; }
 }
