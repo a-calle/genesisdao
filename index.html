@@ -55,19 +55,19 @@
     <div class="project">
       <h3>OpenAlpha</h3>
       <p>A platform where crypto communities share early opportunities and insights.</p>
-      <p>Status: <span class="status voting">🗳️ Voting</span> | Votes: <span id="votes-openalpha">123</span> 🔥</p>
+      <p>Status: 🗳️ Voting</p>
     </div>
 
     <div class="project">
       <h3>ChainTools</h3>
       <p>A toolkit of simple web3 tools for creators and builders.</p>
-      <p>Status: <span class="status idea">💡 Idea</span> | Votes: <span id="votes-chaintools">45</span> 🔥</p>
+      <p>Status: 💡 Idea</p>
     </div>
 
     <div class="project">
       <h3>SignalDAO</h3>
       <p>A community voting system to identify trending projects before they explode.</p>
-      <p>Status: <span class="status launched">🚀 Launched</span> | Votes: <span id="votes-signaldao">321</span> 🔥</p>
+      <p>Status: 🚀 Launched</p>
     </div>
   </section>
 
@@ -75,7 +75,6 @@
   <section id="propose" class="fade-in">
     <h2>Propose Your Idea</h2>
     <p>Have an idea for a new crypto project? Submit it through the link below!</p>
-    <p>Ideas submitted so far: <span id="idea-counter">42</span> 💡</p>
 
     <div class="form-container">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSd36ym_ZU7Zngx3K0SfoXg7rkZ2U3Bpo2gOgF9W4e9AmagcFA/viewform?usp=sf_link" 
@@ -95,17 +94,12 @@
     </div>
 
     <h3>Latest Tweets</h3>
-    <!-- Twitter embed corregido -->
     <a class="twitter-timeline" href="https://twitter.com/genesisdao?ref_src=twsrc%5Etfw">Tweets by GenesisDAO</a> 
     <script async src="https://platform.twitter.com/widgets.js"></script>
   </section>
 
-  <!-- Notificaciones flotantes -->
-  <div id="notification-container"></div>
-
-  <!-- Scripts -->
+  <!-- Scripts fade-in -->
   <script>
-    // FADE-IN SECCIONES CON FALLBACK
     const faders = document.querySelectorAll('.fade-in');
     if ('IntersectionObserver' in window) {
       const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -120,52 +114,6 @@
     } else {
       faders.forEach(fader => fader.classList.add('appear'));
     }
-
-    // VOTOS DINÁMICOS
-    const projects = [
-      { id: 'votes-openalpha', votes: 123, max: 200 },
-      { id: 'votes-chaintools', votes: 45, max: 150 },
-      { id: 'votes-signaldao', votes: 321, max: 400 }
-    ];
-    setInterval(() => {
-      projects.forEach(p => {
-        const el = document.getElementById(p.id);
-        if(el && p.votes < p.max){
-          const inc = Math.floor(Math.random()*3);
-          p.votes += inc;
-          el.textContent = p.votes;
-        }
-      });
-    }, 2000);
-
-    // CONTADOR DE IDEAS DINÁMICO
-    let ideaCount = 42;
-    setInterval(() => {
-      const el = document.getElementById('idea-counter');
-      if(el){
-        ideaCount += Math.floor(Math.random()*3);
-        el.textContent = ideaCount;
-      }
-    }, 3000);
-
-    // NOTIFICACIONES FLOTANTES
-    const ideas = [
-      "Alice submitted 'MoonFarm' 🚀",
-      "Bob submitted 'ChainSwap' 💡",
-      "Charlie submitted 'NFT Explorer' 🔥",
-      "Dana submitted 'TokenTracker' 🗳️",
-      "Eve submitted 'DeFi Hub' 💡"
-    ];
-    setInterval(() => {
-      const container = document.getElementById('notification-container');
-      if(container){
-        const notif = document.createElement('div');
-        notif.className = 'notification';
-        notif.textContent = ideas[Math.floor(Math.random()*ideas.length)];
-        container.appendChild(notif);
-        setTimeout(() => notif.remove(), 4000);
-      }
-    }, Math.floor(Math.random()*5000)+5000);
   </script>
 
 </body>
