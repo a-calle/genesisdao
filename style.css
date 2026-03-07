@@ -17,31 +17,13 @@ nav {
   padding: 10px 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-nav ul li {
-  margin: 0 15px;
-}
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-nav ul li a:hover {
-  color: #0af;
-}
+nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
+nav ul li { margin: 0 15px; }
+nav ul li a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+nav ul li a:hover { color: #0af; }
 
 /* HERO */
-header {
-  text-align: center;
-  padding: 100px 20px 50px;
-}
+header { text-align: center; padding: 100px 20px 50px; }
 header .logo { width: 120px; margin-bottom: 20px; }
 header h1 { font-size: 3em; margin: 0; }
 header .slogan { font-size: 1.2em; color: #aaa; }
@@ -57,7 +39,6 @@ section {
   transition: all 1s ease-out;
 }
 section.appear { opacity: 1; transform: translateY(0); }
-
 section h2 { font-size: 2em; margin-bottom: 20px; color: #0af; }
 section p { font-size: 1.1em; line-height: 1.6; }
 
@@ -69,8 +50,19 @@ section p { font-size: 1.1em; line-height: 1.6; }
 .status.voting { color: #ff0; }
 .status.idea { color: #0f0; }
 .status.launched { color: #f50; }
+span[id^="votes-"] { transition: all 0.3s ease; }
 
 /* BUTTONS */
 .buttons { margin-top: 20px; }
 .button { display: inline-block; margin: 5px 10px 0 0; padding: 10px 20px; color: #fff; background-color: #0af; text-decoration: none; border-radius: 6px; transition: background 0.3s; }
 .button:hover { background-color: #08c; }
+
+/* PROPOSE YOUR IDEA */
+#propose .form-container { background-color: #111; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+#propose iframe { border-radius: 8px; }
+
+/* NOTIFICATIONS */
+#notification-container { position: fixed; bottom: 20px; right: 20px; width: 300px; z-index: 200; }
+.notification { background-color: #111; border-left: 4px solid #0af; color: #fff; padding: 10px 15px; margin-top: 10px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); opacity: 0; transform: translateX(100%); animation: slide-in 0.5s forwards, fade-out 0.5s 3s forwards; font-size: 0.95em; }
+@keyframes slide-in { to { opacity: 1; transform: translateX(0); } }
+@keyframes fade-out { to { opacity: 0; transform: translateX(100%); } }

@@ -17,6 +17,7 @@
       <li><a href="#incubator">Incubator</a></li>
       <li><a href="#token">Token</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#propose">Propose</a></li>
       <li><a href="#community">Community</a></li>
     </ul>
   </nav>
@@ -39,7 +40,7 @@
   <section id="incubator" class="fade-in">
     <h2>Incubator</h2>
     <p>Propose, discuss, vote, and launch new crypto projects within the Genesis community. Ideas with the most support may become real projects.</p>
-    <p>Submit your ideas through <a href="https://forms.gle/example" target="_blank">this form</a>.</p>
+    <p>Submit your ideas through the form below!</p>
   </section>
 
   <!-- TOKEN -->
@@ -55,19 +56,30 @@
     <div class="project">
       <h3>OpenAlpha</h3>
       <p>A platform where crypto communities share early opportunities and insights.</p>
-      <p>Status: <span class="status voting">🗳️ Voting</span> | Votes: 123 🔥</p>
+      <p>Status: <span class="status voting">🗳️ Voting</span> | Votes: <span id="votes-openalpha">123</span> 🔥</p>
     </div>
 
     <div class="project">
       <h3>ChainTools</h3>
       <p>A toolkit of simple web3 tools for creators and builders.</p>
-      <p>Status: <span class="status idea">💡 Idea</span> | Votes: 45 🔥</p>
+      <p>Status: <span class="status idea">💡 Idea</span> | Votes: <span id="votes-chaintools">45</span> 🔥</p>
     </div>
 
     <div class="project">
       <h3>SignalDAO</h3>
       <p>A community voting system to identify trending projects before they explode.</p>
-      <p>Status: <span class="status launched">🚀 Launched</span> | Votes: 321 🔥</p>
+      <p>Status: <span class="status launched">🚀 Launched</span> | Votes: <span id="votes-signaldao">321</span> 🔥</p>
+    </div>
+  </section>
+
+  <!-- PROPOSE YOUR IDEA -->
+  <section id="propose" class="fade-in">
+    <h2>Propose Your Idea</h2>
+    <p>Have an idea for a new crypto project? Submit it below and the community can vote on it!</p>
+    <p>Ideas submitted so far: <span id="idea-counter">42</span> 💡</p>
+
+    <div class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd36ym_ZU7Zngx3K0SfoXg7rkZ2U3Bpo2gOgF9W4e9AmagcFA/viewform?usp=publish-editor" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   </section>
 
@@ -86,8 +98,12 @@
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </section>
 
+  <!-- Notifications flotantes -->
+  <div id="notification-container"></div>
+
+  <!-- SCRIPTS -->
   <script>
-    // Simple fade-in on scroll
+    // Fade-in on scroll
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.1 };
     const appearOnScroll = new IntersectionObserver(function(entries, observer){
@@ -97,8 +113,51 @@
         observer.unobserve(entry);
       });
     }, appearOptions);
-
     faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Votos dinámicos
+    const projects = [
+      { id: 'votes-openalpha', votes: 123, max: 200 },
+      { id: 'votes-chaintools', votes: 45, max: 150 },
+      { id: 'votes-signaldao', votes: 321, max: 400 }
+    ];
+    function randomIncrement() {
+      projects.forEach(p => {
+        if(p.votes < p.max){
+          const increment = Math.floor(Math.random()*3);
+          p.votes += increment;
+          document.getElementById(p.id).textContent = p.votes;
+        }
+      });
+    }
+    setInterval(randomIncrement, 2000);
+
+    // Contador dinámico de ideas
+    let ideaCount = 42;
+    function incrementIdeas() {
+      ideaCount += Math.floor(Math.random()*3);
+      document.getElementById('idea-counter').textContent = ideaCount;
+    }
+    setInterval(incrementIdeas, 3000);
+
+    // Notificaciones flotantes
+    const ideas = [
+      "Alice submitted 'MoonFarm' 🚀",
+      "Bob submitted 'ChainSwap' 💡",
+      "Charlie submitted 'NFT Explorer' 🔥",
+      "Dana submitted 'TokenTracker' 🗳️",
+      "Eve submitted 'DeFi Hub' 💡"
+    ];
+    function showNotification() {
+      const container = document.getElementById('notification-container');
+      const notif = document.createElement('div');
+      notif.className = 'notification';
+      const idea = ideas[Math.floor(Math.random()*ideas.length)];
+      notif.textContent = idea;
+      container.appendChild(notif);
+      setTimeout(() => notif.remove(), 4000);
+    }
+    setInterval(showNotification, Math.floor(Math.random()*5000)+5000);
   </script>
 
 </body>
