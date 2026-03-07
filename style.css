@@ -1,120 +1,23 @@
-/* ========================
-   RESET BÁSICO
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-/* ========================
-   BODY CON FONDO ANIMADO
-========================= */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(270deg, #0f0f0f, #111111, #0f0f0f, #111111);
-  background-size: 800% 800%;
-  animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ========================
-   NAVIGATION
-========================= */
-nav {
-  background: #111;
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-nav ul li a {
-  color: #f0f0f0;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-nav ul li a:hover { color: #00ffff; }
-
-/* ========================
-   HERO
-========================= */
-#hero {
-  text-align: center;
-  padding: 1rem 2rem;
-}
-#hero h1, #hero .slogan, #hero .subheadline {
-  margin: 0.2rem 0;
-}
-#hero .logo { max-width: 150px; margin-bottom: 1rem; }
-#hero h1 { font-size: 3rem; }
-#hero .slogan { font-weight: 600; font-size: 1.5rem; }
-#hero .subheadline { font-size: 1rem; color: #aaa; }
-
-/* ========================
-   SECCIONES
-========================= */
-section {
-  padding: 4rem 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease-out;
-}
-section.appear { opacity: 1; transform: translateY(0); }
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff50, 0 0 20px #00ffff30;
-}
-section p { font-size: 1rem; margin-bottom: 1rem; color: #ccc; }
-
-/* ========================
-   PROJECTS
-========================= */
-.project {
+/* IDEAS PAGE */
+.idea {
   background: rgba(26,26,26,0.7);
   padding: 1.5rem;
   margin: 1rem 0;
   border-radius: 12px;
   transition: transform 0.3s;
 }
-.project:hover { transform: translateY(-5px); }
+.idea:hover { transform: translateY(-5px); }
 
-/* ========================
-   BUTTONS
-========================= */
-.button {
-  display: inline-block;
-  padding: 0.8rem 2rem;
+.vote-btn {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
   background: #00ffff;
   color: #111;
-  text-decoration: none;
-  font-weight: 700;
+  border: none;
   border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
   transition: all 0.3s;
 }
-.button:hover { background: #00cccc; color: #fff; }
-.buttons a { margin-right: 1rem; }
-
-/* ========================
-   MEDIA QUERIES
-========================= */
-@media (max-width: 768px) {
-  nav ul { flex-direction: column; gap: 1rem; }
-  #hero h1 { font-size: 2.5rem; }
-  #hero .slogan { font-size: 1.2rem; }
-}
+.vote-btn:hover { background: #00cccc; color: #fff; }
+.vote-count { font-weight: 600; }
