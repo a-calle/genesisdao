@@ -40,7 +40,6 @@
   <section id="incubator" class="fade-in">
     <h2>Incubator</h2>
     <p>Propose, discuss, vote, and launch new crypto projects within the Genesis community. Ideas with the most support may become real projects.</p>
-    <p>Submit your ideas through the link below!</p>
   </section>
 
   <!-- TOKEN -->
@@ -105,44 +104,46 @@
 
   <!-- Scripts -->
   <script>
-    // Fade-in on scroll
+    // FADE-IN SECCIONES CON FALLBACK
     const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.1 };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer){
-      entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        entry.classList.add('appear');
-        observer.unobserve(entry);
-      });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    if ('IntersectionObserver' in window) {
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.classList.add('appear');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      faders.forEach(fader => appearOnScroll.observe(fader));
+    } else {
+      faders.forEach(fader => fader.classList.add('appear'));
+    }
 
-    // Votos dinámicos
+    // VOTOS DINÁMICOS
     const projects = [
       { id: 'votes-openalpha', votes: 123, max: 200 },
       { id: 'votes-chaintools', votes: 45, max: 150 },
       { id: 'votes-signaldao', votes: 321, max: 400 }
     ];
-    function randomIncrement() {
+    setInterval(() => {
       projects.forEach(p => {
         if(p.votes < p.max){
-          const increment = Math.floor(Math.random()*3);
-          p.votes += increment;
+          const inc = Math.floor(Math.random()*3);
+          p.votes += inc;
           document.getElementById(p.id).textContent = p.votes;
         }
       });
-    }
-    setInterval(randomIncrement, 2000);
+    }, 2000);
 
-    // Contador dinámico de ideas
+    // CONTADOR DE IDEAS DINÁMICO
     let ideaCount = 42;
-    function incrementIdeas() {
+    setInterval(() => {
       ideaCount += Math.floor(Math.random()*3);
       document.getElementById('idea-counter').textContent = ideaCount;
-    }
-    setInterval(incrementIdeas, 3000);
+    }, 3000);
 
-    // Notificaciones flotantes
+    // NOTIFICACIONES FLOTANTES
     const ideas = [
       "Alice submitted 'MoonFarm' 🚀",
       "Bob submitted 'ChainSwap' 💡",
@@ -150,16 +151,14 @@
       "Dana submitted 'TokenTracker' 🗳️",
       "Eve submitted 'DeFi Hub' 💡"
     ];
-    function showNotification() {
+    setInterval(() => {
       const container = document.getElementById('notification-container');
       const notif = document.createElement('div');
       notif.className = 'notification';
-      const idea = ideas[Math.floor(Math.random()*ideas.length)];
-      notif.textContent = idea;
+      notif.textContent = ideas[Math.floor(Math.random()*ideas.length)];
       container.appendChild(notif);
       setTimeout(() => notif.remove(), 4000);
-    }
-    setInterval(showNotification, Math.floor(Math.random()*5000)+5000);
+    }, Math.floor(Math.random()*5000)+5000);
   </script>
 
 </body>
