@@ -5,11 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GENESIS</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- NAVIGATION -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#incubator">Incubator</a></li>
+      <li><a href="#token">Token</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+  </nav>
+
   <!-- HERO -->
-  <header>
+  <header id="hero">
     <img src="images/genesis_logo.png" alt="GENESIS Logo" class="logo">
     <h1>GENESIS</h1>
     <p class="slogan">Every idea has a genesis</p>
@@ -17,51 +30,76 @@
   </header>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="fade-in">
     <h2>About Genesis</h2>
     <p>Genesis is a community-driven incubator for early crypto ideas. We believe the next generation of crypto projects will emerge from open internet communities, not closed venture capital firms.</p>
   </section>
 
   <!-- INCUBATOR -->
-  <section id="incubator">
+  <section id="incubator" class="fade-in">
     <h2>Incubator</h2>
-    <p>Propose, discuss, vote and launch new crypto projects within the Genesis community.</p>
+    <p>Propose, discuss, vote, and launch new crypto projects within the Genesis community. Ideas with the most support may become real projects.</p>
+    <p>Submit your ideas through <a href="https://forms.gle/example" target="_blank">this form</a>.</p>
   </section>
 
   <!-- TOKEN -->
-  <section id="token">
+  <section id="token" class="fade-in">
     <h2>GEN Token</h2>
-    <p>GEN powers the Genesis ecosystem: vote on ideas, propose projects, and earn rewards.</p>
+    <p>GEN powers the Genesis ecosystem: vote on ideas, propose projects, and earn rewards for contributions.</p>
   </section>
 
-  <!-- PRIMERAS IDEAS INCUBADAS -->
-  <section id="projects">
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
     <h2>First Incubated Projects</h2>
 
     <div class="project">
       <h3>OpenAlpha</h3>
       <p>A platform where crypto communities share early opportunities and insights.</p>
+      <p>Status: <span class="status voting">🗳️ Voting</span> | Votes: 123 🔥</p>
     </div>
 
     <div class="project">
       <h3>ChainTools</h3>
       <p>A toolkit of simple web3 tools for creators and builders.</p>
+      <p>Status: <span class="status idea">💡 Idea</span> | Votes: 45 🔥</p>
     </div>
 
     <div class="project">
       <h3>SignalDAO</h3>
       <p>A community voting system to identify trending projects before they explode.</p>
+      <p>Status: <span class="status launched">🚀 Launched</span> | Votes: 321 🔥</p>
     </div>
   </section>
 
   <!-- COMMUNITY -->
-  <section id="community">
+  <section id="community" class="fade-in">
     <h2>Community</h2>
-    <p>Join us on:</p>
-    <a href="#" class="button">Twitter/X</a>
-    <a href="#" class="button">Telegram</a>
-    <a href="#" class="button">Pump.fun</a>
+    <p>Join us and help shape the next generation of crypto projects:</p>
+    <div class="buttons">
+      <a href="https://twitter.com/genesisdao" target="_blank" class="button">Twitter/X</a>
+      <a href="https://t.me/genesisdao" target="_blank" class="button">Telegram</a>
+      <a href="https://pump.fun" target="_blank" class="button">Pump.fun</a>
+    </div>
+
+    <h3>Latest Tweets</h3>
+    <a class="twitter-timeline" href="https://twitter.com/genesisdao?ref_src=twsrc%5Etfw">Tweets by GenesisDAO</a> 
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </section>
+
+  <script>
+    // Simple fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer){
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.classList.add('appear');
+        observer.unobserve(entry);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 
 </body>
 </html>

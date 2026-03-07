@@ -3,86 +3,74 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #000;
+  background: linear-gradient(180deg,#000,#0a0a0a);
   color: #fff;
 }
 
-/* HEADER HERO */
+/* NAVIGATION */
+nav {
+  position: fixed;
+  width: 100%;
+  background-color: #111;
+  top: 0;
+  z-index: 100;
+  padding: 10px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  margin: 0 15px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+nav ul li a:hover {
+  color: #0af;
+}
+
+/* HERO */
 header {
   text-align: center;
-  padding: 50px 20px;
+  padding: 100px 20px 50px;
 }
+header .logo { width: 120px; margin-bottom: 20px; }
+header h1 { font-size: 3em; margin: 0; }
+header .slogan { font-size: 1.2em; color: #aaa; }
+header .subheadline { font-size: 1.1em; color: #aaa; margin-top: 10px; }
 
-header .logo {
-  width: 120px;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 3em;
-  margin: 0;
-}
-
-header .slogan {
-  font-size: 1.2em;
-  color: #aaa;
-}
-
-header .subheadline {
-  font-size: 1.1em;
-  color: #aaa;
-  margin-top: 10px;
-}
-
-/* SECCIONES */
+/* SECTIONS */
 section {
-  padding: 50px 20px;
-  max-width: 800px;
+  padding: 80px 20px;
+  max-width: 900px;
   margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-out;
 }
+section.appear { opacity: 1; transform: translateY(0); }
 
-section h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #0af;
-}
+section h2 { font-size: 2em; margin-bottom: 20px; color: #0af; }
+section p { font-size: 1.1em; line-height: 1.6; }
 
-section p {
-  font-size: 1.1em;
-  line-height: 1.6;
-}
+/* PROJECTS */
+.project { margin-bottom: 30px; padding: 20px; border-left: 4px solid #0af; background-color: #111; border-radius: 8px; transition: transform 0.3s, box-shadow 0.3s; }
+.project:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.6); }
+.project h3 { margin-top: 0; color: #0af; }
+.project p { margin: 5px 0; color: #ccc; }
+.status.voting { color: #ff0; }
+.status.idea { color: #0f0; }
+.status.launched { color: #f50; }
 
-/* PROYECTOS INCUBADOS */
-#projects .project {
-  margin-bottom: 30px;
-  padding: 20px;
-  border-left: 4px solid #0af;
-  background-color: #111;
-  border-radius: 8px;
-}
-
-#projects .project h3 {
-  margin-top: 0;
-  color: #0af;
-}
-
-#projects .project p {
-  margin: 5px 0 0;
-  color: #ccc;
-}
-
-/* BOTONES COMUNIDAD */
-.button {
-  display: inline-block;
-  margin: 5px 10px 0 0;
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #0af;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.3s;
-}
-
-.button:hover {
-  background-color: #08c;
-}
+/* BUTTONS */
+.buttons { margin-top: 20px; }
+.button { display: inline-block; margin: 5px 10px 0 0; padding: 10px 20px; color: #fff; background-color: #0af; text-decoration: none; border-radius: 6px; transition: background 0.3s; }
+.button:hover { background-color: #08c; }
