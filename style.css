@@ -18,11 +18,9 @@ body {
   min-height: 100vh;
   background: linear-gradient(270deg, #0f0f0f, #111111, #0f0f0f, #111111);
   background-size: 800% 800%;
-  background-attachment: fixed; /* fondo fijo */
   animation: gradientBG 15s ease infinite;
 }
 
-/* Gradient animado */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -59,7 +57,10 @@ nav ul li a:hover {
 ========================= */
 #hero {
   text-align: center;
-  padding: 2rem 2rem; /* contenido visible desde arriba */
+  padding: 1rem 2rem; /* contenido pegado arriba */
+}
+#hero h1, #hero .slogan, #hero .subheadline {
+  margin: 0.5rem 0; /* quitar márgenes grandes predeterminados */
 }
 #hero .logo {
   max-width: 150px;
@@ -67,12 +68,10 @@ nav ul li a:hover {
 }
 #hero h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
 }
 #hero .slogan {
   font-weight: 600;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
 }
 #hero .subheadline {
   font-size: 1rem;
@@ -84,7 +83,7 @@ nav ul li a:hover {
 ========================= */
 section {
   padding: 4rem 2rem;
-  opacity: 0;             /* fade-in */
+  opacity: 0;             
   transform: translateY(20px);
   transition: all 1s ease-out;
 }
@@ -92,8 +91,6 @@ section.appear {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Glow en títulos */
 section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
