@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GENESIS</title>
+  <title>GENESIS – Community Ideas</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -19,66 +19,57 @@
 
   <!-- HERO -->
   <header id="hero">
-    <img src="images/genesis_logo.png" alt="GENESIS Logo" class="logo">
-    <h1>GENESIS</h1>
-    <p class="slogan">Every idea has a genesis</p>
-    <p class="subheadline">A community-driven incubator exploring the future of crypto projects.</p>
+    <h1>Community Ideas</h1>
+    <p class="subheadline">Vote for your favorite crypto ideas below!</p>
   </header>
 
-  <!-- SECCIONES -->
-  <section id="about" class="fade-in">
-    <h2>About Genesis</h2>
-    <p>Genesis is a community-driven incubator for early crypto ideas...</p>
-  </section>
+  <!-- IDEAS LIST -->
+  <section id="ideas" class="fade-in">
+    <h2>Active Ideas</h2>
 
-  <section id="incubator" class="fade-in">
-    <h2>Incubator</h2>
-    <p>Propose, discuss, vote, and launch new crypto projects...</p>
-  </section>
-
-  <section id="token" class="fade-in">
-    <h2>GEN Token</h2>
-    <p>GEN powers the Genesis ecosystem: vote, propose, and earn rewards...</p>
-  </section>
-
-  <section id="projects" class="fade-in">
-    <h2>First Incubated Projects</h2>
-    <div class="project">
+    <div class="idea" data-id="openalpha">
       <h3>OpenAlpha</h3>
-      <p>A platform where crypto communities share early opportunities...</p>
-      <p>Status: 🗳️ Voting</p>
+      <p>A platform where crypto communities share early opportunities and insights.</p>
+      <button class="vote-btn">👍 Vote</button>
+      <span class="vote-count">0</span> votes
     </div>
-    <div class="project">
+
+    <div class="idea" data-id="chaintools">
       <h3>ChainTools</h3>
       <p>A toolkit of simple web3 tools for creators and builders.</p>
-      <p>Status: 💡 Idea</p>
+      <button class="vote-btn">👍 Vote</button>
+      <span class="vote-count">0</span> votes
     </div>
-    <div class="project">
+
+    <div class="idea" data-id="signaldao">
       <h3>SignalDAO</h3>
-      <p>A community voting system to identify trending projects...</p>
-      <p>Status: 🚀 Launched</p>
+      <p>A community voting system to identify trending projects before they explode.</p>
+      <button class="vote-btn">👍 Vote</button>
+      <span class="vote-count">0</span> votes
     </div>
-    <a href="ideas.html" class="button">See All Ideas & Vote</a>
+
   </section>
 
-  <section id="propose" class="fade-in">
-    <h2>Propose Your Idea</h2>
-    <p>Submit your idea through the link below!</p>
-    <div class="form-container">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd36ym_ZU7Zngx3K0SfoXg7rkZ2U3Bpo2gOgF9W4e9AmagcFA/viewform?usp=sf_link" target="_blank" class="button">Submit Your Idea</a>
-    </div>
-  </section>
+  <!-- Script de votos -->
+  <script>
+    const ideas = document.querySelectorAll('.idea');
+    ideas.forEach(idea => {
+      const id = idea.dataset.id;
+      const countSpan = idea.querySelector('.vote-count');
+      const stored = localStorage.getItem('votes_' + id) || 0;
+      countSpan.textContent = stored;
 
-  <section id="community" class="fade-in">
-    <h2>Community</h2>
-    <div class="buttons">
-      <a href="https://twitter.com/genesisdao" target="_blank" class="button">Twitter/X</a>
-      <a href="https://t.me/genesisdao" target="_blank" class="button">Telegram</a>
-      <a href="https://pump.fun" target="_blank" class="button">Pump.fun</a>
-    </div>
-  </section>
+      const btn = idea.querySelector('.vote-btn');
+      btn.addEventListener('click', () => {
+        let votes = parseInt(localStorage.getItem('votes_' + id) || 0);
+        votes += 1;
+        localStorage.setItem('votes_' + id, votes);
+        countSpan.textContent = votes;
+      });
+    });
+  </script>
 
-  <!-- Fade-in script -->
+  <!-- Fade-in -->
   <script>
     const faders = document.querySelectorAll('.fade-in');
     if ('IntersectionObserver' in window) {
